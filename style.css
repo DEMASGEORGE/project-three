@@ -1,0 +1,186 @@
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    overflow: hidden;
+    background-color: hsl(0, 12%, 97%);
+    animation: opening 0.2s ease 1;
+    position: relative;
+}
+
+.page {
+    width: 76%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 370px) ;
+    gap: 20px 20px;
+    align-self: center;
+    grid-template-areas:
+    "one one two five"
+    "three four four five" ;
+}
+
+.page > div {
+    border-radius: 15px;
+    padding: 35px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    color: white;
+    transition: 0.2s ;
+    position: relative;
+}
+
+.name {
+    width: 180px ;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.name > div {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.name > div > span:first-child {
+    font-weight: bold;
+    font-size: 17px;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.name > div > span:nth-child(2) {
+    color: rgba(255, 255, 255, 0.705);
+}
+.three .name > div > span:nth-child(2),
+.five .name > div > span:nth-child(2) {
+    color: rgba(0, 0, 0, 0.575);
+}
+
+img {
+    border-radius: 50%;
+    border: solid 4px rgba(0, 0, 0, 0.171);
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+
+div.one::after {
+    content: url(./images/bg-pattern-quotation.svg);
+    position: absolute;
+    border: none;
+    border-radius: 0;
+    right: 130px;
+    top: 20px;
+    transform: scale(1.2);
+    z-index: -1;
+}
+div.one {
+    grid-area: one;
+    background-color: hsl(263, 55%, 52%);
+    z-index: 0;
+}
+
+div.two {
+    grid-area: two;
+    background-color: hsl(217, 19%, 35%);
+}
+
+div.three {
+    grid-area: three;
+    background-color: white;
+    color: black;
+}
+
+div.four {
+    grid-area: four;
+    background-color: hsl(219, 29%, 14%);
+}
+
+div.five {
+    grid-area: five;
+    background-color: white;
+    color: hsl(219, 29%, 14%);
+    overflow: hidden;
+}
+
+p.one {
+    font-weight: bold;
+    font-size: 22px;
+    letter-spacing: 0.5px;
+    line-height: 30px;
+    margin-bottom: 30px;
+}
+
+p.two {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.705);
+    line-height: 23px;
+}
+
+.three p.two,
+.five p.two {
+    color: rgba(0, 0, 0, 0.623);
+}
+
+.attribution {
+    margin: auto;
+}
+
+.attribution p {
+   color: black; 
+   letter-spacing: 2px;
+   font-size: 13px;
+}
+a {
+    color: var(--itembackground);
+    text-decoration: none;
+    color: #7541c8;
+}
+
+/* animations and hover */
+
+.page > div:hover {
+    transform: scale(1.05);
+}
+
+img:hover {
+    transform: scale(1.5);
+}
+
+@keyframes opening {
+    from{
+        transform: scale(0.8);
+    }
+    to{
+        transform: scale(1);
+    }
+}
+
+/* media */
+
+@media (max-width: 440px) {
+    body {
+        overflow: auto;
+    }
+    .page {
+        display: flex;
+        flex-direction: column;
+        width: 95%;
+        margin-top: 20px;
+    }
+    div.one::after {
+        right: 20px;
+    }
+}
